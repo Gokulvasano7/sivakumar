@@ -163,7 +163,7 @@ h1, h2, h3 {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                url('../assets/hero-bg.jpg');
+                url('../assets/bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
