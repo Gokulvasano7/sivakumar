@@ -116,33 +116,82 @@ h1, h2, h3 {
     margin: 5px 0;
     transition: all 0.3s ease;
 }
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+    display: none;  /* Hidden by default */
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
 
 /* Mobile Navigation */
+/* Remove duplicate nav-menu and hamburger styles */
+/* Keep only these mobile navigation styles */
+
+/* Update mobile navigation styles */
 @media screen and (max-width: 768px) {
+
     .hamburger {
-        display: block;
+        display: block;  /* Show hamburger on mobile */
+        position: relative;
+        right: 0;
     }
 
     .nav-links {
         position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
         background: rgba(44, 62, 80, 0.98);
         flex-direction: column;
         align-items: center;
-        padding-top: 2rem;
+        justify-content: center;
         gap: 2rem;
-        transition: left 0.3s ease;
+        transition: 0.4s ease-in-out;
+        z-index: 999;
+        padding-top: 80px;
     }
 
     .nav-links.active {
-        left: 0;
+        right: 0; /* Slide in from right */
     }
 
+    .nav-links li {
+        opacity: 0;
+        width: 100%;
+        text-align: center;
+        transform: translateX(50px);
+        animation: slideIn 0.5s ease forwards;
+        animation-delay: calc(0.1s * var(--i));
+    }
+
+    /* .nav-links a {
+        font-size: 1.2rem;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 2rem;
+    } */
+
     .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: translateY(8px) rotate(45deg);
     }
 
     .hamburger.active span:nth-child(2) {
@@ -150,14 +199,22 @@ h1, h2, h3 {
     }
 
     .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    .navbar.scrolled {
-        padding: 1rem 5%;
-        background: rgba(44, 62, 80, 1);
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
 
 /* Hero Section */
 .hero {
