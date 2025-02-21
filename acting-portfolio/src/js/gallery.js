@@ -20,7 +20,32 @@ class Gallery {
             {
                 src: './assets/gallery/5.jpg',
                 title: ''
+            },
+            {
+                src: './assets/gallery/6.jpg',
+                title: ''
+            },
+            {
+                src: './assets/gallery/7.jpg',
+                title: ''
+            },
+            {
+                src: './assets/gallery/8.jpg',
+                title: ''
+            },
+            {
+                src: './assets/gallery/9.jpg',
+                title: ''
+            },
+            {
+                src: './assets/gallery/10.jpg',
+                title: ''
+            },
+            {
+                src: './assets/gallery/11.jpg',
+                title: ''
             }
+            
         ];
         this.container = document.querySelector('.gallery-grid');
         this.modal = this.createModal();

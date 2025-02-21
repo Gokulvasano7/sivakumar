@@ -11,6 +11,69 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.gallery')) {
         new Gallery();
     }
+
+    // Get all necessary elements
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const menuItems = document.querySelectorAll('.nav-links li');
+
+    // Function to toggle menu
+    function toggleMenu() {
+        // Toggle classes
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        
+        // Toggle body scroll
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'visible';
+        }
+    }
+
+    // Function to close menu
+    function closeMenu() {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = 'visible';
+    }
+
+    // Event Listeners
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event bubbling
+        toggleMenu();
+    });
+
+    // Close menu when clicking anywhere else
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    // Close menu when clicking menu items
+    menuItems.forEach(item => {
+        item.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+    });
+
+    // Scroll effect for navbar
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile Menu Animation Setup
+    setMenuAnimations();
 });
 
 // Mobile Menu Animation Setup
@@ -28,14 +91,6 @@ window.addEventListener('scroll', () => {
     } else {
         header.classList.remove('scrolled');
     }
-});
-
-// Mobile Menu Toggle
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
-    setMenuAnimations();
 });
 
 // Close Mobile Menu
@@ -180,4 +235,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.gallery')) {
         new Gallery();
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    // Toggle mobile menu
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        document.body.classList.toggle('no-scroll');
+    });
+
+    // Close menu when clicking links
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('no-scroll');
+        });
+    });
 });
