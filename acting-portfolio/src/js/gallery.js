@@ -44,6 +44,15 @@ class Gallery {
             {
                 src: './assets/gallery/11.jpg',
                 title: ''
+            }, 
+            {
+                src:'./assets/gallery/12.jpg',
+                title:''
+            },
+            
+            {
+                src:'./assets/gallery/13.jpg',
+                title:''
             }
             
         ];
